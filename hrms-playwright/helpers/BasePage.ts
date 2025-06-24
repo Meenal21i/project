@@ -10,11 +10,19 @@ export class BasePage {
     return this.page;
   }
 
-  async click(locator: Locator | string) {
-    const element = typeof locator === 'string' ? this.page.locator(locator) : locator;
-    await element.waitFor({ state: 'visible' });
-    await element.click();
-  }
+  // async click(locator: Locator | string) {
+  //   const element = typeof locator === 'string' ? this.page.locator(locator) : locator;
+  //   await element.waitFor({ state: 'visible' });
+  //   await element.click();
+  // }
+
+async click(locator: Locator | string) {
+  const element = typeof locator === 'string' ? this.page.locator(locator) : locator;
+  await element.first().scrollIntoViewIfNeeded();
+  await element.first().waitFor({ state: 'visible', timeout: 30000 });
+  await element.first().click();
+}
+
 
     async clicksecond(locator: Locator | string) {
     const element = typeof locator === 'string' ? this.page.locator(locator) : locator;

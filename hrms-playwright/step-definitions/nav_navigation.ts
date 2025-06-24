@@ -8,9 +8,18 @@ let navBarPage: NavBarPage;
 
 Given('I am logged into the HRMS application', async function () {
   await this.page.goto(process.env.BASE_URL!);
-  // You can modularize login in a LoginPage if needed
+
+  // Perform login manually
+  await this.page.getByPlaceholder('username@intimetec.com').fill(process.env.USER_NAME!);
+  await this.page.getByPlaceholder('Your password').fill(process.env.PASS_WORD!);
+  await this.page.locator('#login-form-input-submit-btn').click();
+
+  // Wait for dashboard/menu to appear
+  await this.page.waitForSelector('.mantine-bfmej7'); // or any sidebar locator
+
   navBarPage = new NavBarPage(this.page);
 });
+
 
 When('I expand and verify all sub-links under the top-level menus', async function () {
   for (const [topLevelMenu, subLinks] of Object.entries(NavStructure)) {
