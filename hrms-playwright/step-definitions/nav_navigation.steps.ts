@@ -1,0 +1,40 @@
+import { Given, When, Then } from '@cucumber/cucumber';
+import { NavBarPage } from '../pages/NavBarPage';
+import { NavStructure } from '../constants/navStructure';
+import { NavBarLocators } from '../locators/navbarLocators';
+import { expect } from '@playwright/test';
+
+let navBarPage: NavBarPage;
+
+Given('I am logged into the HRMS application', async function () {
+  await this.page.goto(process.env.BASE_URL!);
+  // You can modularize login in a LoginPage if needed
+  navBarPage = new NavBarPage(this.page);
+});
+
+When('I expand and verify all sub-links under the top-level menus', async function () {
+  for (const [topLevelMenu, subLinks] of Object.entries(NavStructure)) {
+    await navBarPage.clickTopLevelNav(topLevelMenu as keyof typeof NavBarLocators);
+
+    for (const link of subLinks) {
+      const xpath = Object.entries(NavBarLocators).find(([key]) => key.toLowerCase().includes(link.text.toLowerCase().replace(/\s/g, '')))?.[1];
+      if (!xpath) throw new Error(`Locator for ${link.text} not found`);
+      await navBarPage.isSubOptionVisible(xpath);
+    }
+  }
+});
+
+Then('Each sub-link should navigate to its expected URL', async function () {
+  for (const [topLevelMenu, subLinks] of Object.entries(NavStructure)) {
+    await navBarPage.clickTopLevelNav(topLevelMenu as keyof typeof NavBarLocators);
+
+    for (const link of subLinks) {
+      const xpath = Object.entries(NavBarLocators).find(([key]) => key.toLowerCase().includes(link.text.toLowerCase().replace(/\s/g, '')))?.[1];
+      if (!xpath) throw new Error(`Locator for ${link.text} not found`);
+      
+      await navBarPage.clickSubOption(xpath);
+      await navBarPage.verifyCurrentUrl(link.expectedUrl);
+      await this.page.goBack(); // Return to nav page
+    }
+  }
+});

@@ -1,0 +1,30 @@
+{
+  "name": "saucedemo-playwright",
+  "version": "1.0.0",
+  "description": "BDD automation of SauceDemo with Playwright + Cucumber + TypeScript",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test":  "cucumber-js",
+    "test:all": "npm run test:spec && npm run test:bdd",
+    "test:spec": "npx playwright test",
+    "report": "npx playwright show-report",
+    "test:bdd": "cucumber-js --require-module ts-node/register --require steps/**/*.ts --format json:reports/cucumber-report.json features/**/*.feature"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.3.0",
+    "@faker-js/faker": "^9.8.0",
+    "@playwright/test": "^1.53.1",
+    "multiple-cucumber-html-reporter": "^3.9.3",
+    "playwright": "^1.53.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0"
+  }
+}
