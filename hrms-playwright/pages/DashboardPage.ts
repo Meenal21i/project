@@ -2,6 +2,7 @@ import { Page, expect } from '@playwright/test';
 import { NavigationPage } from '../helpers/NavigationPage';
 import { NavBarLocators } from '../locators/navbarLocators';
 import { PageUrls } from '../constants/pageURLs';
+import { CommonLocators } from '../locators/commonLocators';
 
 export class DashboardPage extends NavigationPage {
   constructor(protected page: Page) {
@@ -80,5 +81,15 @@ async clickFooterLink(platform: string): Promise<void> {
   await link.first().click();
 }
 
+  async clickProfileIcon() {
+    await this.page.locator(CommonLocators.PROFILE_ICON).click();
+  }
 
+  async clickLogout() {
+    await this.page.locator(CommonLocators.LOGOUT_OPTION).click();
+  }
+
+  async isAtLoginPage(): Promise<boolean> {
+    return await this.page.getByPlaceholder('username@intimetec.com').isVisible();
+  }
 }
