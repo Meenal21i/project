@@ -25,7 +25,7 @@
 //       await leaveAttendancePage.navigateToMyHolidays();
 //       break;
 //     default:
-//       throw new Error(`❌ Unknown sub-module: ${subModule}`);
+//       throw new Error(`Unknown sub-module: ${subModule}`);
 //   }
 // });
 
@@ -49,7 +49,7 @@
 //       expectedUrl = PageUrls.MY_HOLIDAYS;
 //       break;
 //     default:
-//       throw new Error(`❌ Unknown sub-module: ${subModule}`);
+//       throw new Error(`Unknown sub-module: ${subModule}`);
 //   }
 
 //   await expect(this.page).toHaveURL(expectedUrl);

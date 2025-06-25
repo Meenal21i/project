@@ -1,6 +1,6 @@
 import { Page, expect } from '@playwright/test';
 import { NavigationPage } from '../helpers/NavigationPage';
-import { NavBarLocators } from '../locators/navbarLocators'; // Adjust if you store dashboard-specific locators elsewhere
+import { NavBarLocators } from '../locators/navbarLocators';
 import { PageUrls } from '../constants/pageURLs';
 
 export class DashboardPage extends NavigationPage {
@@ -20,22 +20,27 @@ export class DashboardPage extends NavigationPage {
     await expect(this.page).toHaveURL(PageUrls.DASHBOARD);
   }
 
-async getCurrentDateFromCalendar(): Promise<string> {
-  const today = new Date().getDate().toString();
-  const allHighlightedDates = this.page.locator('.mantine-Calendar-day[style*="background-color"]');
+  async getCurrentDateFromCalendar(): Promise<string> {
+    const expectedStyle = 'background-color: rgb(35, 181, 181); color: rgb(255, 255, 255);';
+    
+    // Get all date buttons
+    const allButtons = this.page.locator('.mantine-Calendar-day');
 
-  const count = await allHighlightedDates.count();
-  for (let i = 0; i < count; i++) {
-    const button = allHighlightedDates.nth(i);
-    const text = await button.textContent();
+    const count = await allButtons.count();
 
-    if (text?.trim() === today) {
-      return text.trim();
+    for (let i = 0; i < count; i++) {
+      const button = allButtons.nth(i);
+
+      const style = await button.getAttribute('style');
+      const text = await button.textContent();
+
+      if (style?.trim() === expectedStyle && text?.trim()) {
+        return text.trim();
+      }
     }
-  }
 
-  throw new Error(`❌ Could not find today's date (${today}) highlighted in the calendar`);
-}
+    throw new Error(`Could not find the calendar button with exact expected style: "${expectedStyle}"`);
+  }
 
 
 }

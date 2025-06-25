@@ -46,7 +46,7 @@
 //       await organizationPage.navigateToEmployeeDirectory();
 //       break;
 //     default:
-//       throw new Error(`❌ Unknown Organization sub-page: "${page}"`);
+//       throw new Error(`Unknown Organization sub-page: "${page}"`);
 //   }
 // });
 
@@ -59,6 +59,6 @@
 //       await expect(this.page).toHaveURL(PageUrls.EMPLOYEE_DIRECTORY);
 //       break;
 //     default:
-//       throw new Error(`❌ Unknown Organization sub-page: "${page}"`);
+//       throw new Error(`Unknown Organization sub-page: "${page}"`);
 //   }
 // });

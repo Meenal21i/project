@@ -5,10 +5,8 @@ import { DashboardPage } from '../pages/DashboardPage';
 let dashboardPage: DashboardPage;
 
 Then('I should see today’s date highlighted on the calendar', async function () {
-  dashboardPage = new DashboardPage(this.page);
-
+  const dashboardPage = new DashboardPage(this.page);
+  const actualDate = await dashboardPage.getCurrentDateFromCalendar();
   const today = new Date().getDate().toString();
-  const highlightedDate = await dashboardPage.getCurrentDateFromCalendar();
-
-  expect(highlightedDate).toBe(today);
+  expect(actualDate).toBe(today);
 });

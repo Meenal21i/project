@@ -51,7 +51,7 @@ When(/^I navigate to the (.+) page under Organization$/, async function (page: s
       await organizationPage.navigateToEmployeeDirectory();
       break;
     default:
-      throw new Error(`❌ Unknown Organization page: ${page}`);
+      throw new Error(` Unknown Organization page: ${page}`);
   }
 });
 
@@ -61,7 +61,7 @@ Then(/^I should be redirected to the (.+) page URL under Organization$/, async f
     'Employee Directory': PageUrls.EMPLOYEE_DIRECTORY
   }[page];
 
-  if (!expectedUrl) throw new Error(`❌ Expected URL not found for: ${page}`);
+  if (!expectedUrl) throw new Error(` Expected URL not found for: ${page}`);
   await expect(this.page).toHaveURL(expectedUrl);
 });
 
@@ -87,7 +87,7 @@ When(/^I navigate to the (.+) page under Leave & Attendance$/, async function (p
       await leavePage.navigateToMyHolidays();
       break;
     default:
-      throw new Error(`❌ Unknown Leave page: ${page}`);
+      throw new Error(`Unknown Leave page: ${page}`);
   }
 });
 
@@ -100,6 +100,6 @@ Then(/^I should be redirected to the (.+) page URL under Leave & Attendance$/, a
     'My Holidays': PageUrls.MY_HOLIDAYS,
   }[page];
 
-  if (!expectedUrl) throw new Error(`❌ Expected URL not found for: ${page}`);
+  if (!expectedUrl) throw new Error(`Expected URL not found for: ${page}`);
   await expect(this.page).toHaveURL(expectedUrl);
 });
