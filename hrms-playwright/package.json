@@ -9,8 +9,8 @@
     "test:all": "npm run test:spec && npm run test:bdd",
     "test:spec": "npx playwright test",
     "report": "npx playwright show-report",
-    "test:bdd": "cucumber-js --require-module ts-node/register --require steps/**/*.ts --format json:reports/cucumber-report.json features/**/*.feature"
-
+    "test:bdd": "cucumber-js --require-module ts-node/register --require steps/**/*.ts --format json:reports/cucumber-report.json features/**/*.feature",
+    "test:login": "cucumber-js --tags '@login'"
   },
   "keywords": [],
   "author": "",

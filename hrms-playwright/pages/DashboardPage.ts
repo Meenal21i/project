@@ -42,5 +42,43 @@ export class DashboardPage extends NavigationPage {
     throw new Error(`Could not find the calendar button with exact expected style: "${expectedStyle}"`);
   }
 
+async getFooterLinkHref(platform: string): Promise<string> {
+  const platformMap: Record<string, string> = {
+    YouTube: 'icon-tabler-brand-youtube',
+    // Facebook: 'icon-tabler-brand-facebook',
+    LinkedIn: 'icon-tabler-brand-linkedin',
+    Twitter: 'tabler-icon-brand-x' // Twitter icon class
+  };
+
+  const iconClass = platformMap[platform];
+  if (!iconClass) throw new Error(`Unknown platform: ${platform}`);
+
+  const locator = this.page.locator(`footer a svg.${iconClass}`).first();
+  const anchor = locator.locator('xpath=..');
+  const href = await anchor.getAttribute('href');
+
+  if (!href) throw new Error(`Href not found for ${platform} icon`);
+  return href;
+}
+
+async scrollToFooter(): Promise<void> {
+  await this.page.locator('#navbar-footer').scrollIntoViewIfNeeded();
+}
+
+async clickFooterLink(platform: string): Promise<void> {
+  const selectorMap: Record<string, string> = {
+    YouTube: 'a[href*="youtube.com"]',
+    // Facebook: 'a[href*="facebook.com"]',
+    LinkedIn: 'a[href*="linkedin.com"]',
+    Twitter: 'a[href*="twitter.com"]'
+  };
+
+  const linkSelector = selectorMap[platform];
+  if (!linkSelector) throw new Error(`Unknown platform: ${platform}`);
+
+  const link = this.page.locator(linkSelector);
+  await link.first().click();
+}
+
 
 }
