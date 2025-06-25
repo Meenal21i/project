@@ -40,7 +40,7 @@
 export const NavBarLocators = {
   Dashboard: 'role=button[name="Dashboard"]',
   Organization: 'role=button[name="Organization"]',
-  'Leave & Attendance': 'role=button[name="Leave & Attendance"]', // ✅ MUST match NavStructure key
+  'Leave & Attendance': 'role=button[name="Leave & Attendance"]',
 
   // Organization sub-links
   MyProfile: '//a[text()="My profile"]',
