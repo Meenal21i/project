@@ -2,9 +2,9 @@ import { Page, expect } from '@playwright/test';
 import { NavigationPage } from '../helpers/NavigationPage';
 import { LoginLocators } from '../locators/loginLocators';
 import { Messages } from '../constants/messages';
-import * as dotenv from 'dotenv';
+// import * as dotenv from 'dotenv';
 
-dotenv.config();
+// dotenv.config();
 
 export class LoginPage extends NavigationPage {
   constructor(protected page: Page) {

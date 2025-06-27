@@ -1,9 +1,9 @@
 import { expect, Page } from '@playwright/test';
 import { NavBarLocators } from '../locators/navbarLocators';
 import { NavigationPage } from '../helpers/NavigationPage';
-import * as dotenv from 'dotenv';
+// import * as dotenv from 'dotenv';
 
-dotenv.config();
+// dotenv.config();
 
 export class NavBarPage extends NavigationPage {
   constructor(protected page: Page) {

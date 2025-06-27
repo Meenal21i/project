@@ -6,9 +6,9 @@ import { OrganizationPage } from '../pages/OrganizationPage';
 import { LeaveAttendancePage } from '../pages/LeaveAttendancePage';
 import { NavBarLocators } from '../locators/navbarLocators';
 import { PageUrls } from '../constants/pageURLs';
-import * as dotenv from 'dotenv';
+// import * as dotenv from 'dotenv';
 
-dotenv.config();
+// dotenv.config();
 
 let dashboardPage: DashboardPage;
 let organizationPage: OrganizationPage;
@@ -17,21 +17,22 @@ let leavePage: LeaveAttendancePage;
 //
 // Login
 //
-Given('I am logged into the HRMS application', async function () {
-  await this.page.goto(process.env.BASE_URL!);
-  await this.page.getByPlaceholder('username@intimetec.com').fill(process.env.USER_NAME!);
-  await this.page.getByPlaceholder('Your password').fill(process.env.PASS_WORD!);
-  await this.page.locator('#login-form-input-submit-btn').click();
+// Given('I am logged into the HRMS application', async function () {
+//   await this.page.goto(process.env.BASE_URL!);
+//   await this.page.getByPlaceholder('username@intimetec.com').fill(process.env.USER_NAME!);
+//   await this.page.getByPlaceholder('Your password').fill(process.env.PASS_WORD!);
+//   await this.page.locator('#login-form-input-submit-btn').click();
 
-  dashboardPage = new DashboardPage(this.page);
-  organizationPage = new OrganizationPage(this.page);
-  leavePage = new LeaveAttendancePage(this.page);
-});
+//   dashboardPage = new DashboardPage(this.page);
+//   organizationPage = new OrganizationPage(this.page);
+//   leavePage = new LeaveAttendancePage(this.page);
+// });
 
 //
 // Dashboard
 //
 When(/^I navigate to the Dashboard page$/, async function () {
+  dashboardPage = new DashboardPage(this.page);
   await dashboardPage.click(NavBarLocators.Dashboard);
 });
 
@@ -43,6 +44,7 @@ Then(/^I should be redirected to the Dashboard page URL$/, async function () {
 // Organization
 //
 When(/^I navigate to the (.+) page under Organization$/, async function (page: string) {
+  organizationPage = new OrganizationPage(this.page);
   switch (page) {
     case 'My Profile':
       await organizationPage.navigateToMyProfile();
@@ -70,6 +72,7 @@ Then(/^I should be redirected to the (.+) page URL under Organization$/, async f
 //
 
 When(/^I navigate to the (.+) page under Leave & Attendance$/, async function (page: string) {
+  leavePage = new LeaveAttendancePage(this.page);
   switch (page) {
     case 'Attendance record':
       await leavePage.navigateToAttendanceRecord();

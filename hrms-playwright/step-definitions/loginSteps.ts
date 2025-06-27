@@ -4,9 +4,9 @@ import { LoginPage } from '../pages/LoginPage';
 import { LoginLocators } from '../locators/loginLocators';
 import { PageUrls } from '../constants/pageURLs';
 import { Messages } from '../constants/messages';
-import * as dotenv from 'dotenv';
+// import * as dotenv from 'dotenv';
 
-dotenv.config();
+// dotenv.config();
 
 let loginPage: LoginPage;
 

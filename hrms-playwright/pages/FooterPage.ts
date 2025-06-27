@@ -1,8 +1,11 @@
 import { Page } from '@playwright/test';
 import { FooterLocators } from '../locators/footerLocators';
+import { NavigationPage } from '../helpers/NavigationPage';
 
-export class FooterPage {
-  constructor(private page: Page) {}
+export class FooterPage extends NavigationPage{
+  constructor(protected page: Page) {
+    super(page);
+  }
 
   async getFooterLinkHref(platform: string): Promise<string> {
     const locatorMap: Record<string, string> = {

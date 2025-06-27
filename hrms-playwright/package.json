@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "test":  "cucumber-js",
+    "test": "cucumber-js",
     "test:all": "npm run test:spec && npm run test:bdd",
     "test:spec": "npx playwright test",
     "report": "npx playwright show-report",
@@ -25,6 +25,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "date-fns": "^4.1.0",
     "dotenv": "^16.5.0"
   }
 }
