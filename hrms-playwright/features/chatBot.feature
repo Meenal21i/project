@@ -1,3 +1,4 @@
+@chatbot
 Feature: Chatbot Validation
   As a user of the HRMS application
   I want to interact with the chatbot

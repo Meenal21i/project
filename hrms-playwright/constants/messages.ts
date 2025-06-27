@@ -1,3 +1,3 @@
-export const ErrorMessages = {
+export const Messages = {
   invalidLogin: 'Something went wrong!!'
 };

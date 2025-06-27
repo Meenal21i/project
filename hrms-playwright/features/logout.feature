@@ -1,3 +1,4 @@
+@logout
 Feature: Logout Functionality
   As a logged-in user
   I want to logout from the HRMS application

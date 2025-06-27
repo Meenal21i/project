@@ -6,29 +6,22 @@ dotenv.config();
 export class BasePage {
   constructor(protected page: Page) {}
 
-    public getPage(): Page {
-    return this.page;
+public getPage(): Page {
+  return this.page;
+ }
+
+  async click(locator: Locator | string) {
+    const element = typeof locator === 'string' ? this.page.locator(locator) : locator;
+    await element.first().scrollIntoViewIfNeeded();
+    await element.first().waitFor({ state: 'visible', timeout: 30000 });
+    await element.first().click();
   }
 
-  // async click(locator: Locator | string) {
+  // async clicksecond(locator: Locator | string) {
   //   const element = typeof locator === 'string' ? this.page.locator(locator) : locator;
   //   await element.waitFor({ state: 'visible' });
-  //   await element.click();
+  //   await element.nth(1).click();
   // }
-
-async click(locator: Locator | string) {
-  const element = typeof locator === 'string' ? this.page.locator(locator) : locator;
-  await element.first().scrollIntoViewIfNeeded();
-  await element.first().waitFor({ state: 'visible', timeout: 30000 });
-  await element.first().click();
-}
-
-
-    async clicksecond(locator: Locator | string) {
-    const element = typeof locator === 'string' ? this.page.locator(locator) : locator;
-    await element.waitFor({ state: 'visible' });
-    await element.nth(1).click();
-  }
 
   async fill(locator: Locator | string, value: string) {
     const element = typeof locator === 'string' ? this.page.locator(locator) : locator;
@@ -65,13 +58,12 @@ async click(locator: Locator | string) {
     await element.waitFor({ state: 'visible' });
   }
 
-public async getPageUrl( url:string = "", timeout=60000) : Promise<string> {
-  await this.page.waitForURL(url);
-  return this.page.url();
-  
-}
+  public async getPageUrl( url:string = "", timeout=60000) : Promise<string> {
+    await this.page.waitForURL(url);
+    return this.page.url();
+  }
 
-public async checkPageUrl(timeout=60000, url:string): Promise<void> {
-  this.page.waitForURL(url);
-}
+  public async checkPageUrl(timeout=60000, url:string): Promise<void> {
+    this.page.waitForURL(url);
+  }
 }

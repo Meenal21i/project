@@ -1,7 +1,7 @@
 import { Page, expect } from '@playwright/test';
 import { NavigationPage } from '../helpers/NavigationPage';
 import { LoginLocators } from '../locators/loginLocators';
-import { ErrorMessages } from '../constants/messages';
+import { Messages } from '../constants/messages';
 import * as dotenv from 'dotenv';
 
 dotenv.config();

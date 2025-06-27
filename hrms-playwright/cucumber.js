@@ -8,7 +8,7 @@ module.exports = {
     requireModule: ['ts-node/register'],
     format: ['progress', 'html:reports/cucumber-report.html'],
     publishQuiet: true,
-    parallel: 1,
+    parallel: 10,
     timeout: 60000
   }
 };

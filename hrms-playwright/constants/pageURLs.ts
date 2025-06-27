@@ -1,6 +1,3 @@
-// export const PageUrls = {
-//     DASHBOARD_URL: 'https://hrms.test.intimetec.americas/user/dashboard',
-// };
 export const PageUrls = {
   DASHBOARD: /\/user\/dashboard$/,
   MY_PROFILE: /\/user\/organization\/my-profile(\?.*)?$/,

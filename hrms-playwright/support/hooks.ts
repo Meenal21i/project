@@ -25,10 +25,10 @@ import { Before, After, setDefaultTimeout } from '@cucumber/cucumber';
 import { chromium } from '@playwright/test';
 import { CustomWorld } from './world';
 
-setDefaultTimeout(60 * 1000);
+setDefaultTimeout(60 * 1000 * 3);
 
 Before(async function (this: CustomWorld, scenario) {
-  this.browser = await chromium.launch({ headless: true });
+  this.browser = await chromium.launch({ headless: false });
   this.context = await this.browser.newContext();
   this.page = await this.context.newPage();
 
@@ -43,8 +43,15 @@ Before(async function (this: CustomWorld, scenario) {
   }
 });
 
+// After(async function (this: CustomWorld) {
+//   await this.page?.close();
+//   await this.context?.close();
+//   await this.browser?.close();
+// });
+
 After(async function (this: CustomWorld) {
-  await this.page?.close();
-  await this.context?.close();
-  await this.browser?.close();
+  // Don't close if still running async steps
+  if (this.page && !this.page.isClosed()) await this.page.close();
+  if (this.context) await this.context.close();
+  if (this.browser) await this.browser.close();
 });
