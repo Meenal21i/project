@@ -1,15 +1,16 @@
 @chatbot
 Feature: Chatbot Validation
-  As a user of the HRMS application
+  As a user of the HRMS portal
   I want to interact with the chatbot
-  So that I can get help using the application
+  So that I can ask my queries
 
   Background:
-    Given I am logged into the HRMS application
+    Given User is logged into the HRMS application
 
   @chatbot
   Scenario: Chatbot should open and respond to messages
-    When I click the chatbot icon
+    When User clicks the chatbot icon
     Then the chatbot dialog box should appear
-    Then the chatbot should display welcome headers
-    Then I send a message "Hello there" and verify it was sent
+    And the chatbot should display welcome headers
+    And User sends a random message
+    Then the message should appear in the chat history

@@ -1,6 +1,7 @@
 import { Page } from '@playwright/test';
 import { FooterLocators } from '../locators/footerLocators';
 import { NavigationPage } from '../helpers/NavigationPage';
+import { ErrorMessages } from '../messages/messages';
 
 export class FooterPage extends NavigationPage{
   constructor(protected page: Page) {
@@ -13,12 +14,10 @@ export class FooterPage extends NavigationPage{
       LINKEDIN: FooterLocators.LINKEDIN_ICON,
       TWITTER: FooterLocators.TWITTER_ICON,
     };
-
     const locator = locatorMap[platform.toUpperCase()];
-    if (!locator) throw new Error(`Unsupported platform: ${platform}`);
-
+    if (!locator) throw new Error(ErrorMessages.NO_SOCIAL_MEDIA(locator));
     const href = await this.page.locator(locator).getAttribute('href');
-    if (!href) throw new Error(`No href found for ${platform}`);
+    if (!href) throw new Error(ErrorMessages.NO_SOCIAL_MEDIA(platform));
     return href;
   }
 }

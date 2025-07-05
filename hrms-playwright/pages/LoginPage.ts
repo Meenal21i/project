@@ -1,10 +1,10 @@
 import { Page, expect } from '@playwright/test';
 import { NavigationPage } from '../helpers/NavigationPage';
 import { LoginLocators } from '../locators/loginLocators';
-import { Messages } from '../constants/messages';
-// import * as dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-// dotenv.config();
+let timeoutValue = process.env.TIMEOUT ? parseInt(process.env.TIMEOUT) : undefined;
 
 export class LoginPage extends NavigationPage {
   constructor(protected page: Page) {
@@ -12,20 +12,20 @@ export class LoginPage extends NavigationPage {
   }
 
   async navigateToLogin(): Promise<void> {
-    await this.page.goto(process.env.BASE_URL!);
+    await this.page.goto(process.env.BASE_URL!, {waitUntil:'domcontentloaded', timeout: timeoutValue});
   }
 
   async fillLoginForm(username: string, password: string): Promise<void> {
-    await this.page.fill(LoginLocators.usernameField, username);
-    await this.page.fill(LoginLocators.passwordField, password);
+    await this.page.fill(LoginLocators.USERNAME_FIELD, username);
+    await this.page.fill(LoginLocators.PASSWORD_FIELD, password);
   }
 
   async navigateToDashboard(): Promise<void> {
-    await this.page.click(LoginLocators.loginButton);
+    await this.page.click(LoginLocators.LOGIN_BUTTON);
   }
 
   async getInvalidLoginError(): Promise<string> {
-    const error = this.page.locator(LoginLocators.errorMessage);
+    const error = this.page.locator(LoginLocators.ERROR_MESSAGE);
     return error.innerText();
   }
 }

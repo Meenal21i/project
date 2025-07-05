@@ -1,11 +1,8 @@
 @dashboardOverview
 Feature: Dashboard Overview Validation
-  As a user of the HRMS application
-  I want to verify that today's date is highlighted in the calendar on the Dashboard
-  So that I can ensure the calendar reflects the correct current date
-
-  Background:
-    Given I am logged into the HRMS application
+  As a user of the HRMS portal
+  I want to verify today's date on the calendar
+  So that I can know the correct current date
 
   @dashboardOverview
   Scenario: Validate today’s date is highlighted in the Dashboard calendar

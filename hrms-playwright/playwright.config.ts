@@ -8,6 +8,8 @@ export default defineConfig({
     navigationTimeout: 60000,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    trace: 'on',
+    trace: 'retain-on-failure',
   },
+  // reporter:[['allure-playwright']]
+  reporter: [['html', { open: 'never' }]],
 });

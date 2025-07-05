@@ -1,8 +1,8 @@
 @attendanceRecord
 Feature: Attendance Record Validation
-
-  Background:
-    Given I am logged into the HRMS application
+  As a user of HRMS portal
+  I want to check my attendance record
+  So that I can ensure its correct status
 
   @attendanceRecord
   Scenario: Verify Week-Off record status

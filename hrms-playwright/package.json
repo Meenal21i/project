@@ -1,16 +1,13 @@
 {
-  "name": "saucedemo-playwright",
+  "name": "hrms-playwright",
   "version": "1.0.0",
-  "description": "BDD automation of SauceDemo with Playwright + Cucumber + TypeScript",
+  "description": "BDD automation of HRMS website with Playwright + TypeScript + Cucumber + Allure Reporting",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
     "test": "cucumber-js",
-    "test:all": "npm run test:spec && npm run test:bdd",
-    "test:spec": "npx playwright test",
-    "report": "npx playwright show-report",
-    "test:bdd": "cucumber-js --require-module ts-node/register --require steps/**/*.ts --format json:reports/cucumber-report.json features/**/*.feature",
-    "test:login": "cucumber-js --tags '@login'"
+    "test:bdd": "cucumber-js --require-module ts-node/register --require step-definitions/**/*.ts --format json:reports/cucumber-report.json features/**/*.feature",
+    "allure:report": "allure generate allure-results --clean -o allure-report && allure open allure-report"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +16,9 @@
     "@cucumber/cucumber": "^11.3.0",
     "@faker-js/faker": "^9.8.0",
     "@playwright/test": "^1.53.1",
+    "allure-commandline": "^2.34.1",
+    "allure-cucumberjs": "^3.3.0",
+    "allure-playwright": "3.3.0",
     "multiple-cucumber-html-reporter": "^3.9.3",
     "playwright": "^1.53.1",
     "ts-node": "^10.9.2",

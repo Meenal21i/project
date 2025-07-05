@@ -20,5 +20,4 @@ export class OrganizationPage extends NavigationPage {
     await this.click(NavBarLocators.EmployeeDirectory);
     await this.page.waitForURL(PageUrls.EMPLOYEE_DIRECTORY);
   }
-
 }

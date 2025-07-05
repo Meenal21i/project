@@ -1,8 +1,8 @@
 @footer
 Feature: Validate Dashboard Footer Social Media Links
-
-  Background:
-    Given I am logged into the HRMS application
+  As a user of HRMS portal
+  I want to check the social media footer links
+  So that I can connect to social media of comapny
 
   Scenario Outline: Validate footer social media href values
     When I get the href for the "<SocialMedia>" icon in the footer

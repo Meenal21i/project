@@ -1,24 +1,20 @@
 import { When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { EmployeeDirectoryPage } from '../pages/employeeDirectoryPage';
+import { EmployeeDirectoryLocators } from '../locators/employeeDirectoryLocators';
 
 let employeeDirectoryPage: EmployeeDirectoryPage;
 let recordCounts: number[] = [];
 
 When('I traverse through all pagination pages', async function () {
   employeeDirectoryPage = new EmployeeDirectoryPage(this.page);
-  let hasNext = true;
-
-  while (hasNext) {
+  let nextAvailable = true;
+  while (nextAvailable) {
     const count = await employeeDirectoryPage.getEmployeeCountOnPage();
-    console.log(`[Debug]: count of records on current page:, ${count} `)
     recordCounts.push(count);
-
-    hasNext = await employeeDirectoryPage.isNextButtonEnabled();
-
-    if (hasNext) {
+    nextAvailable = await employeeDirectoryPage.isNextButtonEnabled();
+    if (nextAvailable) {
       await employeeDirectoryPage.clickNextButton();
-      await this.page.waitForLoadState('networkidle');
     }
   }
 });

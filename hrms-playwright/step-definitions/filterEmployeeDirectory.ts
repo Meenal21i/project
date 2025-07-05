@@ -10,7 +10,6 @@ let employeeDirectoryPage: EmployeeDirectoryPage;
 When('I navigate to the Employee Directory page under Organization module', async function () {
   organizationPage = new OrganizationPage(this.page);
   await organizationPage.navigateToEmployeeDirectory();
-  // expect(organizationPage.getPageUrl)
 });
 
 When('I select {string} from the Job Title filter', async function (jobTitle: string) {
@@ -18,12 +17,8 @@ When('I select {string} from the Job Title filter', async function (jobTitle: st
   await employeeDirectoryPage.selectJobTitle(jobTitle);
 });
 
-// When('I switch to Table View', async function () {
-//   await employeeDirectoryPage.selectTableView();
-// });
 When('I switch to Table View', async function () {
   await employeeDirectoryPage.selectTableView();
-  await this.page.waitForTimeout(2000);
 });
 
 Then('I should see the following employees:', async function (tableOfEmployeeName) {

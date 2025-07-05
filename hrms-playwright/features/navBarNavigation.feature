@@ -1,11 +1,8 @@
 @navbar
 Feature: Navigation Bar Validation
-  As a user of the HRMS application
+  As a user of the HRMS portal
   I want to validate navigation links under Dashboard, Organization, and Leave & Attendance
-  So that I can ensure all redirections work correctly
-
-  Background:
-    Given I am logged into the HRMS application
+  So that I will be redirected correctky
 
   @navbar
   Scenario: Navigate to Dashboard
@@ -14,21 +11,21 @@ Feature: Navigation Bar Validation
 
   @navbar
   Scenario Outline: Navigate to Organization sub-pages
-    When I navigate to the <Page> page under Organization
-    Then I should be redirected to the <Page> page URL under Organization
+    When I navigate to the <SubModule> page under Organization
+    Then I should be redirected to the <SubModule> page URL under Organization
 
     Examples:
-      | Page               |
+      | SubModule          |
       | My Profile         |
       | Employee Directory |
 
   @navbar
   Scenario Outline: Navigate to Leave & Attendance sub-pages
-    When I navigate to the <Page> page under Leave & Attendance
-    Then I should be redirected to the <Page> page URL under Leave & Attendance
+    When I navigate to the <SubModule> page under Leave & Attendance
+    Then I should be redirected to the <SubModule> page URL under Leave & Attendance
 
     Examples:
-      | Page               |
+      | SubModule          |
       | Attendance record  |
       | Leaves Application |
       | Leave Entitlements |
