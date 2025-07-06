@@ -1,4 +1,4 @@
-import { Page, expect } from '@playwright/test';
+import { Page, expect, Locator } from '@playwright/test';
 import { NavigationPage } from '../helpers/NavigationPage';
 import { LoginLocators } from '../locators/loginLocators';
 import * as dotenv from 'dotenv';
@@ -25,7 +25,7 @@ export class LoginPage extends NavigationPage {
   }
 
   async getInvalidLoginError(): Promise<string> {
-    const error = this.page.locator(LoginLocators.ERROR_MESSAGE);
-    return error.innerText();
+    const error: Locator= this.page.locator(LoginLocators.ERROR_MESSAGE);
+    return await error.innerText();
   }
 }
