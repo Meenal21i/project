@@ -5,7 +5,7 @@ Feature: Validate Dashboard Footer Social Media Links
   So that I can connect to social media of comapny
 
   Scenario Outline: Validate footer social media href values
-    When I get the href for the "<SocialMedia>" icon in the footer
+    When User hovers on the "<SocialMedia>" icon in the footer to get the href
     Then it should match the expected URL for "<SocialMedia>"
 
     Examples:

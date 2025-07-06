@@ -11,7 +11,6 @@ let dashboardPage: DashboardPage;
 let organizationPage: OrganizationPage;
 let leavePage: LeaveAttendancePage;
 
-// Dashboard Navigation
 When(/^I navigate to the Dashboard page$/, async function () {
   dashboardPage = new DashboardPage(this.page);
   await dashboardPage.navigateToDashboard();
@@ -21,7 +20,6 @@ Then(/^I should be redirected to the Dashboard page URL$/, async function () {
   await expect(this.page).toHaveURL(PageUrls.DASHBOARD);
 });
 
-// Organization Navigation
 When(/^I navigate to the (.+) page under Organization$/, async function (subModule: string) {
   organizationPage = new OrganizationPage(this.page);
   switch (subModule) {
@@ -46,7 +44,6 @@ Then(/^I should be redirected to the (.+) page URL under Organization$/, async f
   await expect(this.page).toHaveURL(expectedUrl);
 });
 
-// Leave & Attendance Navigation
 When(/^I navigate to the (.+) page under Leave & Attendance$/, async function (subModule: string) {
   leavePage = new LeaveAttendancePage(this.page);
   switch (subModule) {
