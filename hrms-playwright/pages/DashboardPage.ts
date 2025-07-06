@@ -14,8 +14,8 @@ export class DashboardPage extends NavigationPage {
 
   async navigateToDashboard(): Promise<void> {
     const dashboard = this.page.locator(NavBarLocators.Dashboard);
-    await this.click(dashboard);
-    await this.waitForElementVisible(dashboard);
+    await this.wrapper.click(dashboard);
+    await this.wrapper.waitForElementVisible(dashboard);
   }
 
   async getCurrentDateFromCalendar(): Promise<string> {

@@ -7,7 +7,6 @@ Feature: Chatbot Validation
   Background:
     Given User is logged into the HRMS application
 
-  @chatbot
   Scenario: Chatbot should open and respond to messages
     When User clicks the chatbot icon
     Then the chatbot dialog box should appear

@@ -15,7 +15,7 @@ export class AttendanceRecordPage extends NavigationPage {
     const monday = this.page.locator(AttendanceLocators.CALENDAR_ROWS).nth(constMessages.THIRD_ROW).locator(AttendanceLocators.CALENDAR_COLUMN).nth(constMessages.FIRST_COLOUMN);
     await friday.click();
     await monday.click();
-    await this.waitForElementVisible(AttendanceLocators.FIRST_RECORD);
+    await this.wrapper.waitForElementVisible(AttendanceLocators.FIRST_RECORD);
   }
 
   async getAttendanceRecordCount(): Promise<number> {
@@ -28,7 +28,7 @@ export class AttendanceRecordPage extends NavigationPage {
     const statusInput = this.page.locator(AttendanceLocators.STATUS_DROPDOWN_INPUT);
     await statusInput.click();
     await this.page.getByText(status, { exact: true }).click();
-    await this.waitForElementVisible(AttendanceLocators.FIRST_RECORD);
+    await this.wrapper.waitForElementVisible(AttendanceLocators.FIRST_RECORD);
   }
 
   async getRecordCountByStatus(status: string): Promise<number> {

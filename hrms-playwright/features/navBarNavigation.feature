@@ -4,12 +4,10 @@ Feature: Navigation Bar Validation
   I want to validate navigation links under Dashboard, Organization, and Leave & Attendance
   So that I will be redirected correctky
 
-  @navbar
   Scenario: Navigate to Dashboard
     When I navigate to the Dashboard page
     Then I should be redirected to the Dashboard page URL
 
-  @navbar
   Scenario Outline: Navigate to Organization sub-pages
     When I navigate to the <SubModule> page under Organization
     Then I should be redirected to the <SubModule> page URL under Organization
@@ -19,7 +17,6 @@ Feature: Navigation Bar Validation
       | My Profile         |
       | Employee Directory |
 
-  @navbar
   Scenario Outline: Navigate to Leave & Attendance sub-pages
     When I navigate to the <SubModule> page under Leave & Attendance
     Then I should be redirected to the <SubModule> page URL under Leave & Attendance

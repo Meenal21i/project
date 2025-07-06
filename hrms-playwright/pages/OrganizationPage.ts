@@ -10,14 +10,14 @@ export class OrganizationPage extends NavigationPage {
   }
 
   async navigateToMyProfile(): Promise<void> {
-    await this.click(NavBarLocators.Organization);
-    await this.click(NavBarLocators.MyProfile);
+    await this.wrapper.click(NavBarLocators.Organization);
+    await this.wrapper.click(NavBarLocators.MyProfile);
     await this.page.waitForURL(PageUrls.MY_PROFILE);
   }
 
   async navigateToEmployeeDirectory(): Promise<void> {
-    await this.click(NavBarLocators.Organization);
-    await this.click(NavBarLocators.EmployeeDirectory);
+    await this.wrapper.click(NavBarLocators.Organization);
+    await this.wrapper.click(NavBarLocators.EmployeeDirectory);
     await this.page.waitForURL(PageUrls.EMPLOYEE_DIRECTORY);
   }
 }

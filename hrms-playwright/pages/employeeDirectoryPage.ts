@@ -19,12 +19,12 @@ export class EmployeeDirectoryPage extends NavigationPage {
     await viewModeInput.click();
     const tableView =  this.page.locator(EmployeeDirectoryLocators.DROPDOWN_OPTION, { hasText: 'Table View' });
     tableView.click();
-    await this.waitForElementVisible(tableView);
+    await this.wrapper.waitForElementVisible(tableView);
   }
 
   async getEmployeeNames(): Promise<string[]> {
     const employeeNames = this.page.locator(EmployeeDirectoryLocators.EMPLOYEE_ITEM);
-    await this.waitForElementVisible(employeeNames.first());
+    await this.wrapper.waitForElementVisible(employeeNames.first());
     const countOfEmployee = await employeeNames.count();
     const names: string[] = [];
     for (let employee = 0; employee < countOfEmployee; employee++) {
@@ -37,7 +37,7 @@ export class EmployeeDirectoryPage extends NavigationPage {
 
   async getEmployeeCountOnPage(): Promise<number> {
     const employeeCard = this.page.locator(EmployeeDirectoryLocators.EMPLOYEE_ITEM);
-    await this.waitForElementVisible(employeeCard.first());
+    await this.wrapper.waitForElementVisible(employeeCard.first());
     return await employeeCard.count();
   }
 

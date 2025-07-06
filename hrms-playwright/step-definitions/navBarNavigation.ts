@@ -1,4 +1,3 @@
-
 import { When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { DashboardPage } from '../pages/DashboardPage';
@@ -15,7 +14,7 @@ let leavePage: LeaveAttendancePage;
 // Dashboard Navigation
 When(/^I navigate to the Dashboard page$/, async function () {
   dashboardPage = new DashboardPage(this.page);
-  await dashboardPage.click(NavBarLocators.Dashboard);
+  await dashboardPage.navigateToDashboard();
 });
 
 Then(/^I should be redirected to the Dashboard page URL$/, async function () {
