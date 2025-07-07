@@ -8,6 +8,6 @@ Feature: Logout Functionality
     Given User is logged into the HRMS application
 
   Scenario: Logout and redirect to login page
-    When I click on the profile icon
-    And I click on the Logout option
-    Then I should be redirected to the login page
+    When User clicks on the profile icon
+    And User clicks on the Logout option
+    Then User should be redirected to the login page

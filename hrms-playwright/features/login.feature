@@ -5,11 +5,11 @@ Feature: Login Functionality
   So that I can access the dashboard and manage my profile
 
   Scenario: Successful login with valid credentials
-    Given I am on the login page
-    When I enter valid credentials
-    Then I should be redirected to the dashboard page
+    Given User is on the login page
+    When User enters valid credentials
+    Then User should be redirected to the dashboard page
 
   Scenario: Unsuccessful login with invalid credentials
-    Given I am on the login page
-    When I enter invalid credentials
-    Then I should see an error message for invalid login
+    Given User is on the login page
+    When User enters invalid credentials
+    Then User should see an error message for invalid login

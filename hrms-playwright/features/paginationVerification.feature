@@ -8,6 +8,6 @@ So that I can ensure the records and buttons are correct
     Given User is logged into the HRMS application
 
   Scenario: Traverse through all pages and validate record count
-    When I navigate to the Employee Directory page under Organization module
-    And I traverse through all pagination pages
+    When User navigates to the Employee Directory page under Organization module
+    And User traverses through all record pages
     Then Each page should show no more than 12 employee records

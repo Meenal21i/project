@@ -43,6 +43,6 @@ export class DashboardPage extends NavigationPage {
   }
 
   async isAtLoginPage(): Promise<boolean> {
-    return await this.page.getByPlaceholder(LoginLocators.USERNAME_FIELD).isVisible();
+    return await this.page.locator(LoginLocators.USERNAME_FIELD).isVisible();
   }
 }

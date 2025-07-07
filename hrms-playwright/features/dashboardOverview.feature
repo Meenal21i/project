@@ -6,7 +6,7 @@ Feature: Dashboard Overview Validation
 
   Background:
     Given User is logged into the HRMS application
+    When User navigates to the Dashboard page
 
   Scenario: Validate today’s date is highlighted in the Dashboard calendar
-    When I navigate to the Dashboard page
-    Then I should see today’s date highlighted on the calendar
+    Then User should see today’s date highlighted on the calendar

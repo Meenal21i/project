@@ -6,7 +6,7 @@ import { EmployeeDirectoryLocators } from '../locators/employeeDirectoryLocators
 let employeeDirectoryPage: EmployeeDirectoryPage;
 let recordCounts: number[] = [];
 
-When('I traverse through all pagination pages', async function () {
+When('User traverses through all record pages', async function () {
   employeeDirectoryPage = new EmployeeDirectoryPage(this.page);
   let nextAvailable = true;
   while (nextAvailable) {

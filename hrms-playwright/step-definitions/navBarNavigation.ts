@@ -12,16 +12,16 @@ let dashboardPage: DashboardPage;
 let organizationPage: OrganizationPage;
 let leavePage: LeaveAttendancePage;
 
-When(/^I navigate to the Dashboard page$/, async function () {
+When(/^User navigates to the Dashboard page$/, async function () {
   dashboardPage = new DashboardPage(this.page);
   await dashboardPage.navigateToDashboard();
 });
 
-Then(/^I should be redirected to the Dashboard page URL$/, async function () {
+Then(/^User should be redirected to the Dashboard page URL$/, async function () {
   await expect(this.page).toHaveURL(PageUrls.DASHBOARD);
 });
 
-When(/^I navigate to the (.+) page under Organization$/, async function (subModule: string) {
+When(/^User navigates to the (.+) page under Organization$/, async function (subModule: string) {
   organizationPage = new OrganizationPage(this.page);
   switch (subModule) {
     case 'My Profile':
@@ -35,7 +35,7 @@ When(/^I navigate to the (.+) page under Organization$/, async function (subModu
   }
 });
 
-Then(/^I should be redirected to the (.+) page URL under Organization$/, async function (subModule: string) {
+Then(/^User should be redirected to the (.+) page URL under Organization$/, async function (subModule: string) {
   const expectedUrl = {
     'My Profile': PageUrls.MY_PROFILE,
     'Employee Directory': PageUrls.EMPLOYEE_DIRECTORY
@@ -45,7 +45,7 @@ Then(/^I should be redirected to the (.+) page URL under Organization$/, async f
   await expect(this.page).toHaveURL(expectedUrl);
 });
 
-When(/^I navigate to the (.+) page under Leave & Attendance$/, async function (subModule: string) {
+When(/^User navigates to the (.+) page under Leave & Attendance$/, async function (subModule: string) {
   leavePage = new LeaveAttendancePage(this.page);
   switch (subModule) {
     case 'Attendance record':
@@ -68,7 +68,7 @@ When(/^I navigate to the (.+) page under Leave & Attendance$/, async function (s
   }
 });
 
-Then(/^I should be redirected to the (.+) page URL under Leave & Attendance$/, async function (subModule: string) {
+Then(/^User should be redirected to the (.+) page URL under Leave & Attendance$/, async function (subModule: string) {
   const expectedUrl = {
     'Attendance record': PageUrls.ATTENDANCE_RECORD,
     'Leaves Application': PageUrls.LEAVES_APPLICATION,

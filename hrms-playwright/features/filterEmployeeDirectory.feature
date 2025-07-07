@@ -8,10 +8,10 @@ Feature: Filter functionality in Employee Directory
     Given User is logged into the HRMS application
 
   Scenario: Filter employees by Job Title
-    When I navigate to the Employee Directory page under Organization module
-    And I select "Director of Engineering" from the Job Title filter
-    And I switch to Table View
-    Then I should see the following employees:
+    When User navigates to the Employee Directory page under Organization module
+    And User selects "Director of Engineering" from the Job Title filter
+    And User switches to Table View
+    Then User should see the following employees:
       | Kapil Paliwal |
       | Yatin Yogi    |
       | Archit Jain   |

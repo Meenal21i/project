@@ -8,12 +8,12 @@ Feature: Navigation Bar Validation
     Given User is logged into the HRMS application
 
   Scenario: Navigate to Dashboard
-    When I navigate to the Dashboard page
-    Then I should be redirected to the Dashboard page URL
+    When User navigates to the Dashboard page
+    Then User should be redirected to the Dashboard page URL
 
   Scenario Outline: Navigate to Organization sub-pages
-    When I navigate to the <SubModule> page under Organization
-    Then I should be redirected to the <SubModule> page URL under Organization
+    When User navigates to the <SubModule> page under Organization
+    Then User should be redirected to the <SubModule> page URL under Organization
 
     Examples:
       | SubModule          |
@@ -21,8 +21,8 @@ Feature: Navigation Bar Validation
       | Employee Directory |
 
   Scenario Outline: Navigate to Leave & Attendance sub-pages
-    When I navigate to the <SubModule> page under Leave & Attendance
-    Then I should be redirected to the <SubModule> page URL under Leave & Attendance
+    When User navigates to the <SubModule> page under Leave & Attendance
+    Then User should be redirected to the <SubModule> page URL under Leave & Attendance
 
     Examples:
       | SubModule          |

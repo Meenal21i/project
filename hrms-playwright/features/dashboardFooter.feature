@@ -9,7 +9,7 @@ Feature: Validate Dashboard Footer Social Media Links
 
   Scenario Outline: Validate footer social media href values
     When User hovers on the "<SocialMedia>" icon in the footer to get the href
-    Then it should match the expected URL for "<SocialMedia>"
+    Then It should match the expected URL for "<SocialMedia>"
 
     Examples:
       | SocialMedia |
