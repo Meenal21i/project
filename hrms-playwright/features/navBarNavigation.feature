@@ -2,7 +2,10 @@
 Feature: Navigation Bar Validation
   As a user of the HRMS portal
   I want to validate navigation links under Dashboard, Organization, and Leave & Attendance
-  So that I will be redirected correctky
+  So that I will be redirected correctly
+
+  Background:
+    Given User is logged into the HRMS application
 
   Scenario: Navigate to Dashboard
     When I navigate to the Dashboard page

@@ -4,6 +4,9 @@ Feature: Attendance Record Validation
   I want to check my attendance record
   So that I can ensure its correct status
 
+  Background:
+    Given User is logged into the HRMS application
+
   Scenario: Verify Week-Off record status
     When I navigate to the Attendance Record page
     And I select a 4-day date range including Saturday and Sunday

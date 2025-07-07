@@ -4,6 +4,9 @@ Feature: Logout Functionality
   I want to logout from the HRMS application
   So that I can ensure that I am redirected to the login page
 
+  Background:
+    Given User is logged into the HRMS application
+
   Scenario: Logout and redirect to login page
     When I click on the profile icon
     And I click on the Logout option
