@@ -1,7 +1,8 @@
 import { Page } from '@playwright/test';
 import { FooterLocators } from '../locators/footerLocators';
 import { NavigationPage } from '../helpers/NavigationPage';
-import { ErrorMessages } from '../messages/messages';
+import { ErrorMessages } from '../Errors/errorMessages';
+import { UnknownSocialMediaError } from '../Errors/customErrors';
 
 export class FooterPage extends NavigationPage {
   constructor(protected page: Page) {
@@ -17,7 +18,7 @@ export class FooterPage extends NavigationPage {
 
     const key = platform.toUpperCase();
     const locator = locatorMap[key];
-    if (!locator) throw new Error(ErrorMessages.NO_SOCIAL_MEDIA(platform));
+    if (!locator) throw new UnknownSocialMediaError(platform);
     return locator;
   }
 
@@ -29,7 +30,7 @@ export class FooterPage extends NavigationPage {
   async getFooterLinkHref(platform: string): Promise<string> {
     const locator = this.getLocator(platform);
     const href = await this.page.locator(locator).getAttribute('href');
-    if (!href) throw new Error(ErrorMessages.NO_SOCIAL_MEDIA(platform));
+    if (!href) throw new UnknownSocialMediaError(platform);
     return href;
   }
 }

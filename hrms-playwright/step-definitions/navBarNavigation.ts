@@ -5,7 +5,8 @@ import { OrganizationPage } from '../pages/OrganizationPage';
 import { LeaveAttendancePage } from '../pages/LeaveAttendancePage';
 import { NavBarLocators } from '../locators/navbarLocators';
 import { PageUrls } from '../constants/pageURLs';
-import { ErrorMessages } from '../messages/messages';
+import { SubmoduleNotFoundError } from '../Errors/customErrors';
+import { ErrorMessages } from '../Errors/errorMessages';
 
 let dashboardPage: DashboardPage;
 let organizationPage: OrganizationPage;
@@ -30,7 +31,7 @@ When(/^I navigate to the (.+) page under Organization$/, async function (subModu
       await organizationPage.navigateToEmployeeDirectory();
       break;
     default:
-      throw new Error(ErrorMessages.NO_SUB_MODULE(subModule));
+      throw new SubmoduleNotFoundError(subModule);
   }
 });
 
@@ -40,7 +41,7 @@ Then(/^I should be redirected to the (.+) page URL under Organization$/, async f
     'Employee Directory': PageUrls.EMPLOYEE_DIRECTORY
   }[subModule];
 
-  if (!expectedUrl) throw new Error(ErrorMessages.NO_SUB_MODULE(subModule));
+  if (!expectedUrl) throw new SubmoduleNotFoundError(subModule);
   await expect(this.page).toHaveURL(expectedUrl);
 });
 
@@ -63,7 +64,7 @@ When(/^I navigate to the (.+) page under Leave & Attendance$/, async function (s
       await leavePage.navigateToMyHolidays();
       break;
     default:
-      throw new Error(ErrorMessages.NO_SUB_MODULE(subModule));
+      throw new SubmoduleNotFoundError(subModule);
   }
 });
 
@@ -76,6 +77,6 @@ Then(/^I should be redirected to the (.+) page URL under Leave & Attendance$/, a
     'My Holidays': PageUrls.MY_HOLIDAYS,
   }[subModule];
 
-  if (!expectedUrl) throw new Error(ErrorMessages.NO_SUB_MODULE(subModule));
+  if (!expectedUrl) throw new SubmoduleNotFoundError(subModule);
   await expect(this.page).toHaveURL(expectedUrl);
 });

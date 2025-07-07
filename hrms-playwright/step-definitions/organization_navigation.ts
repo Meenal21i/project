@@ -2,6 +2,7 @@
 // // import { expect } from '@playwright/test';
 // // import { OrganizationPage } from '../pages/OrganizationPage';
 // // import { PageUrls } from '../constants/pageURLs';
+// // import { UnknownSocialMediaError } from '../Errors/customErrors';
 
 // // let organizationPage: OrganizationPage;
 
@@ -46,7 +47,7 @@
 //       await organizationPage.navigateToEmployeeDirectory();
 //       break;
 //     default:
-//       throw new Error(`Unknown Organization sub-page: "${page}"`);
+//       throw new SubmoduleNotFoundError(subModule);
 //   }
 // });
 
@@ -59,6 +60,6 @@
 //       await expect(this.page).toHaveURL(PageUrls.EMPLOYEE_DIRECTORY);
 //       break;
 //     default:
-//       throw new Error(`Unknown Organization sub-page: "${page}"`);
+//       throw new SubmoduleNotFoundError(subModule);
 //   }
 // });

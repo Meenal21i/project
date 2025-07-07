@@ -2,7 +2,7 @@ import { When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { ChatBotPage } from '../pages/ChatBotPage';
 import { constMessages } from '../constants/constants';
-import { ErrorMessages } from '../messages/messages';
+import { ErrorMessages } from '../Errors/errorMessages';
 import { faker } from '@faker-js/faker';
 
 let chatBotPage: ChatBotPage;

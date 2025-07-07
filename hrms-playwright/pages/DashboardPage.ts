@@ -5,7 +5,8 @@ import { CommonLocators } from '../locators/commonLocators';
 import { LoginLocators } from '../locators/loginLocators';
 import { NavBarLocators } from '../locators/navbarLocators';
 import { CurrentDateStyle } from '../constants/dateStyle';
-import { ErrorMessages } from '../messages/messages';
+import { HighlightedCalendarButtonNotFoundError } from '../Errors/customErrors';
+import { ErrorMessages } from '../Errors/errorMessages';
 
 export class DashboardPage extends NavigationPage {
   constructor(protected page: Page) {
@@ -30,7 +31,7 @@ export class DashboardPage extends NavigationPage {
         return text;
       }
     }
-    throw new Error(ErrorMessages.NO_HIGHLIGHTED_BUTTON(expectedStyle));
+    throw new HighlightedCalendarButtonNotFoundError(expectedStyle);
   }
 
   async clickProfileIcon() {

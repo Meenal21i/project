@@ -1,6 +1,7 @@
 import { Page } from '@playwright/test';
 import { BasePage } from './BasePage';
-import { navigationErrors } from '../constants/navigationErrors';
+import { NavigationNotImplementedError } from '../Errors/customErrors';
+// import { navigationErrors } from '../constants/navigationErrors';
 
 export class NavigationPage extends BasePage {
   constructor(protected page: Page) {
@@ -8,34 +9,34 @@ export class NavigationPage extends BasePage {
   }
 
   async navigateToDashboard(): Promise<void> {
-    throw new Error(navigationErrors.DASHBOARD);
+    throw new NavigationNotImplementedError(this.constructor.name, 'navigateToDashboard');
   }
 
   async navigateToMyProfile(): Promise<void> {
-    throw new Error(navigationErrors.MY_PROFILE);
+    throw new NavigationNotImplementedError(this.constructor.name, 'navigateToMyProfile');
   }
 
   async navigateToEmployeeDirectory(): Promise<void> {
-    throw new Error(navigationErrors.EMPLOYEE_DIRECTORY);
+    throw new NavigationNotImplementedError(this.constructor.name, 'navigateToEmployeeDirectory');
   }
 
   async navigateToAttendanceRecord(): Promise<void> {
-    throw new Error(navigationErrors.ATTENDANCE_RECORD);
+    throw new NavigationNotImplementedError(this.constructor.name, 'navigateToAttendanceRecord');
   }
 
   async navigateToLeavesApplication(): Promise<void> {
-    throw new Error(navigationErrors.LEAVE_APPLICATION);
+    throw new NavigationNotImplementedError(this.constructor.name, 'navigateToLeavesApplication');
   }
 
   async navigateToLeaveEntitlements(): Promise<void> {
-    throw new Error(navigationErrors.LEAVE_ENTITLEMENTS);
+    throw new NavigationNotImplementedError(this.constructor.name, 'navigateToLeaveEntitlements');
   }
 
   async navigateToLeaveCorrection(): Promise<void> {
-    throw new Error(navigationErrors.LEAVE_CORRECTION);
+    throw new NavigationNotImplementedError(this.constructor.name, 'navigateToLeaveCorrection');
   }
 
   async navigateToMyHolidays(): Promise<void> {
-    throw new Error(navigationErrors.MY_HOLIDAYS);
+    throw new NavigationNotImplementedError(this.constructor.name, 'navigateToMyHolidays');
   }
 }

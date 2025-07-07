@@ -2,6 +2,7 @@
 // import { LeaveAttendancePage } from '../pages/LeaveAttendancePage';
 // import { PageUrls } from '../constants/pageURLs';
 // import { expect } from '@playwright/test';
+// import { UnknownSocialMediaError } from '../Errors/customErrors';
 
 // let leaveAttendancePage: LeaveAttendancePage;
 
@@ -25,7 +26,7 @@
 //       await leaveAttendancePage.navigateToMyHolidays();
 //       break;
 //     default:
-//       throw new Error(`Unknown sub-module: ${subModule}`);
+//       throw new SubmoduleNotFoundError(subModule);
 //   }
 // });
 
@@ -49,7 +50,7 @@
 //       expectedUrl = PageUrls.MY_HOLIDAYS;
 //       break;
 //     default:
-//       throw new Error(`Unknown sub-module: ${subModule}`);
+//       throw new SubmoduleNotFoundError(subModule);
 //   }
 
 //   await expect(this.page).toHaveURL(expectedUrl);
