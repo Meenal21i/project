@@ -5,4 +5,5 @@ export const AttendanceLocators = {
   FIRST_RECORD: 'tr[id="0"]',
   RECORD_ROW: 'tr[id]',
   STATUS_DROPDOWN_INPUT: 'input[placeholder="Status"]',
+  STATUS_DROPDOWN_OPTIONS: '.mantine-Select-dropdown'
 };

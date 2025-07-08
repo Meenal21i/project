@@ -27,6 +27,6 @@ When('User enters invalid credentials', async function () {
 });
 
 Then('User should see an error message for invalid login', async function () {
-  let error= await loginPage.getInvalidLoginError();
-  expect(error).toContain(constMessages.INVALID_LOGIN_MESSAGE);
+  let errorMessage = await loginPage.getInvalidLoginError();
+  expect(errorMessage).toContain(constMessages.INVALID_LOGIN_MESSAGE);
 });
