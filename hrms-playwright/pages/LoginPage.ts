@@ -16,8 +16,8 @@ export class LoginPage extends NavigationPage {
   }
 
   async fillLoginForm(username: string, password: string): Promise<void> {
-    await this.page.fill(LoginLocators.USERNAME_FIELD, username);
-    await this.page.fill(LoginLocators.PASSWORD_FIELD, password);
+    await this.page.fill(LoginLocators.USERNAME_INPUT, username);
+    await this.page.fill(LoginLocators.PASSWORD_INPUT, password);
   }
 
   async navigateToDashboard(): Promise<void> {

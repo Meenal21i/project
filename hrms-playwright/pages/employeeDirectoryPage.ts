@@ -1,6 +1,7 @@
 import { Page, expect } from '@playwright/test';
 import { EmployeeDirectoryLocators } from '../locators/employeeDirectoryLocators';
 import { NavigationPage } from '../helpers/NavigationPage';
+import { EmployeeNotFound } from '../Errors/customErrors';
 
 export class EmployeeDirectoryPage extends NavigationPage {
   constructor(protected page: Page) {
@@ -23,22 +24,28 @@ export class EmployeeDirectoryPage extends NavigationPage {
   }
 
   async getEmployeeNames(): Promise<string[]> {
-    const employeeNames = this.page.locator(EmployeeDirectoryLocators.EMPLOYEE_ITEM);
-    await this.wrapper.waitForElementVisible(employeeNames.first());
-    const countOfEmployee = await employeeNames.count();
+    const wrapperLocator = this.page.locator(EmployeeDirectoryLocators.EMPLOYEE_ITEM);
+    await this.wrapper.waitForElementVisible(wrapperLocator.first());
+    const count = await wrapperLocator.count();
     const names: string[] = [];
-    for (let employee = 0; employee < countOfEmployee; employee++) {
-      const locator = employeeNames.nth(employee);
-      const name = await locator.textContent();
-      if (name) names.push(name.trim());
+    for (let i = 0; i < count; i++) {
+      const item = wrapperLocator.nth(i);
+      const firstParagraph = item.locator('p').first();
+      try {
+        await this.wrapper.waitForElementVisible(firstParagraph);
+        const name = await firstParagraph.textContent();
+        if (name) names.push(name.trim());
+      } catch {
+        throw new EmployeeNotFound();
+      }
     }
     return names;
   }
 
   async getEmployeeCountOnPage(): Promise<number> {
-    const employeeCard = this.page.locator(EmployeeDirectoryLocators.EMPLOYEE_ITEM);
-    await this.wrapper.waitForElementVisible(employeeCard.first());
-    return await employeeCard.count();
+    const employeeItems = this.page.locator(EmployeeDirectoryLocators.EMPLOYEE_ITEM);
+    await this.wrapper.waitForElementVisible(employeeItems.first());
+    return await employeeItems.count();
   }
 
   async isNextButtonEnabled(): Promise<boolean> {

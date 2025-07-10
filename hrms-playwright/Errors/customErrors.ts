@@ -32,3 +32,10 @@ export class HighlightedCalendarButtonNotFoundError extends Error {
     this.name = 'HighlightedCalendarButtonNotFoundError';
   }
 }
+
+export class EmployeeNotFound extends Error {
+  constructor() {
+    super('Failed to extract employee name');
+    this.name = 'EmployeeNotFound';
+  }
+}

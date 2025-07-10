@@ -1,6 +1,6 @@
 export const LoginLocators = {
   ERROR_MESSAGE: '.mantine-6l7pzb.mantine-Notification-body',
-  LOGIN_BUTTON: '//span[text()="Login"]',
-  PASSWORD_FIELD: '#login-form-input-password',
-  USERNAME_FIELD: '#login-form-input-username',
+  LOGIN_BUTTON: 'button[id="login-form-input-submit-btn"]',
+  PASSWORD_INPUT: '#login-form-input-password',
+  USERNAME_INPUT: '#login-form-input-username',
 };

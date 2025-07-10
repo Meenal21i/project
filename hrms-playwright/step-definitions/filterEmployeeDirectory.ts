@@ -19,6 +19,7 @@ When('User selects {string} from the Job Title filter', async function (jobTitle
 
 When('User switches to Table View', async function () {
   await employeeDirectoryPage.selectTableView();
+  
 });
 
 Then('User should see the following employees:', async function (tableOfEmployeeName) {

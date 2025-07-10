@@ -16,8 +16,8 @@ Before(async function (this: CustomWorld, scenario) {
 
   if (!tags.includes('@login-skip')) {
     await this.page.goto(process.env.BASE_URL!);
-    await this.page.fill(LoginLocators.USERNAME_FIELD, process.env.USER_NAME!);
-    await this.page.fill(LoginLocators.PASSWORD_FIELD, process.env.PASS_WORD!);
+    await this.page.fill(LoginLocators.USERNAME_INPUT, process.env.USER_NAME!);
+    await this.page.fill(LoginLocators.PASSWORD_INPUT, process.env.PASS_WORD!);
     await this.page.locator(LoginLocators.LOGIN_BUTTON).click();
   }
 });

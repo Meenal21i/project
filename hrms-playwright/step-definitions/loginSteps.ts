@@ -3,7 +3,6 @@ import { expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { PageUrls } from '../constants/pageURLs';
 import { constMessages } from '../constants/constants';
-import { ErrorMessages } from '../Errors/errorMessages';
 
 let loginPage: LoginPage;
 
